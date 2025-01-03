@@ -19,7 +19,7 @@ def generate_prompt_and_solution(style: str) -> tuple[str, str]:
     prompt_template = ChatPromptTemplate.from_template(
         "I am about to give you a core prompt to transform into a {style} style. "
         "It's a prompt to solve an interview-style coding task. "
-        "Your prompts must never begin with 'Certainly! Here is a ... prompt' or anything similar. "
+        "Do not begin with 'Certainly! Here is a ... prompt' or similar. "
         "Return ONLY the prompt you generated. No solution or anything else. "
         "Don't forget to PLAY UP THE {style} style!!"
         "Here is the prompt: {CORE_PROMPT}"
@@ -31,13 +31,16 @@ def generate_prompt_and_solution(style: str) -> tuple[str, str]:
         {"style": style, "CORE_PROMPT": CORE_PROMPT}
     )
 
-    solution_template = ChatPromptTemplate.from_template(
-        "{prompt}"
-        "Do not include explanations or triple backticks, ONLY the code starting with a def."
-    )
+    solution = (
+        ChatPromptTemplate.from_template(
+            "{prompt}"
+            "Do not include explanations or triple backticks, ONLY the code starting with a def."
+        )
+        | llm
+        | StrOutputParser()
+    ).invoke({"prompt": prompt})
 
     llm.temperature = 0.0  # Set temperature for deterministic output
-    solution = (solution_template | llm | StrOutputParser()).invoke({"prompt": prompt})
 
     return prompt, solution
 
