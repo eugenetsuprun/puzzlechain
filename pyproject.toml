@@ -12,6 +12,8 @@ langchain-openai = "^0.2.14"
 python-dotenv = "^1.0.1"
 langchain-core = "^0.3.28"
 langchain = "^0.3.13"
+scipy = "^1.14.1"
+pandas = "^2.2.3"
 
 
 [build-system]
