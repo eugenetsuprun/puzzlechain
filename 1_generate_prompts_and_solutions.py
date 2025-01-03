@@ -32,8 +32,8 @@ def generate_prompt_and_solution(style: str) -> tuple[str, str]:
     )
 
     solution_template = ChatPromptTemplate.from_template(
-        "{prompt}\nDo not include the prompt.\n"
-        "Do not include conversational text or explanations or triple backticks, ONLY the code starting with a def. "
+        "{prompt}"
+        "Do not include explanations or triple backticks, ONLY the code starting with a def."
     )
 
     llm.temperature = 0.0  # Set temperature for deterministic output
