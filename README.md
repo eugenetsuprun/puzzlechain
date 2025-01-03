@@ -31,18 +31,18 @@ python 3_analyze.py
 
 ## My Findings
 
-These findings are limited to the one core prompt I used and the one specific model I used. (`gpt-4o-mini`). Take them with a grain of salt. 🤏
+These findings are super limited to the one core prompt I used and the one specific model I used. (`gpt-4o-mini`). Take them with a grain of salt. 🤏
 
 ### Correctness
 
-| Style   | Incorrect | Correct |
-| :------ | :-------- | :------ |
-| URGENT  | 3         | 97      |
-| Neutral | 16        | 84      |
-| Polite  | 7         | 93      |
-| Rude    | 26        | 74      |
+| Style   | Correct % |
+| :------ | :-------- |
+| URGENT  | 97%       |
+| Polite  | 93%       |
+| Neutral | 84%       |
+| Rude    | 74%       |
 
-- This table shows the counts of incorrect (0) and correct (1) solutions for each programming style.
+This table shows the counts of incorrect and correct solutions for each prompt style.
 
 - **Chi-squared Statistic:** 27.763
 - **P-value:** 0.000
