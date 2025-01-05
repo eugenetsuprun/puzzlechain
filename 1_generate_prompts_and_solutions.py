@@ -30,7 +30,9 @@ def generate_prompt_and_solution(style: str) -> tuple[str, str]:
     prompt = (prompt_template | llm | StrOutputParser()).invoke(
         {"style": style, "CORE_PROMPT": CORE_PROMPT}
     )
-
+    
+    llm.temperature = 0.0 
+    
     solution = (
         ChatPromptTemplate.from_template(
             "{prompt}"
@@ -40,7 +42,6 @@ def generate_prompt_and_solution(style: str) -> tuple[str, str]:
         | StrOutputParser()
     ).invoke({"prompt": prompt})
 
-    llm.temperature = 0.0  # Set temperature for deterministic output
 
     return prompt, solution
 
