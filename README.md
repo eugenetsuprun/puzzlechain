@@ -17,7 +17,7 @@ Then, run `poetry install`.
 
 Enter the poetry-managed virtual environment with `poetry shell`.
 
-Add an `.env` with your OPENAI_API_KEY.
+Add an `.env` with your `OPENAI_API_KEY`.
 
 Tweak `config.py`.
 
